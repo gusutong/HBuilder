@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>播放器</title>
+		<style>
+			div{width: 320px;height:240px;border: 1px solid #666;}
+			div li{list-style: none;margin-top: 6px;font-size:14px;margin-left: 6px;}
+			div li a{float: right;margin-right: 6px;}
+			audio{width:320px;margin-top: 5px;}
+		</style>
+		<link rel="icon" href="C:\Users\2016\Downloads\computer_off.ico"/>
+		<script>
+			var play = document.getElementsByTagName("a");
+			var audio1 = document.getElementById("audio1");
+			for(var i = 0;i<play.length;i++){
+				play[i].onclick = function(){
+					audio1.setAttribute("src") = "audio/" + (i+1) + ".mp3"
+					if(this.value =="播放"){
+						audio1.play();
+						this.value = "暂停";
+					}else{
+						audio1.pause();
+						this.value = "播放";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<li>思念人之屋<a href="#">播放</a></li>
+			<li>临时演员<a href="#">播放</a></li>
+		</div>
+		<audio controls="controls" id="audio1" src="#"></audio>
+	</body>
+</html>
