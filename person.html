@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<style>
+			form{width: 600px;margin: 0px auto;font-size: 14px;}
+			legend{color: red;}
+			fieldset{margin-top: 20px;}
+			input{margin-top: 5px;}
+			.submit{margin-top: 15px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var arr = ["@qq.com","@163.com","@gmail.com","@yahoo.com","@126.com"];
+				var a = document.getElementsByClassName("a")[0],
+				    email = document.getElementById("email"),
+				    option = email.getElementsByTagName("option");
+				a.onkeyup = function(){
+					for(var i = 0;i<option.length;i++)
+					option[i].value = a.value+arr[i];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>请填写个人信息</h1>
+		<fieldset>
+			<legend>基本信息</legend>
+			姓名&nbsp;<input type="text" name="name" required="required" placeholder="请输入姓名"/>*<br />
+			年龄&nbsp;<input type="text" name="year" placeholder="请输入年龄"/>
+		</fieldset>
+		<fieldset>
+			<legend>你想在哪里收到邮件？</legend>
+			邮箱&nbsp;<input type="text" list="email" name="email" required="required" placeholder="请输入邮箱" class="a" step="1"/>*
+			<datalist id="email">
+				<option>@qq.com</option>
+				<option>@163.com</option>
+				<option>@gmail.com</option>
+				<option>@yahoo.com.cn</option>
+				<option>@126.com</option>
+			</datalist>
+		</fieldset>
+		<fieldset>
+			<legend>收入情况</legend>
+			月收入&nbsp;<select name="money" >
+				<option>5k+</option>
+				<option>10k+</option>
+				<option>15k+</option>
+				<option>20k+</option>
+			</select><br/>
+			银行卡&nbsp;<input type="text" name="card"/>
+			有效期&nbsp;<input type="date" name="time"/>
+		</fieldset>
+		<fieldset>
+			<legend>选择提取文件</legend>
+			文件&nbsp;<input type="submit" name="submit" value="提交" class="submit"/>
+		</fieldset>
+		
+	</body>
+</html>
