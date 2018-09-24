@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>页面换肤</title>
+		<style type="text/css">
+			fieldset{width: 600; margin: 0px outo;}
+			legend{}
+				.color1{margin:5px auto; border:1px solid #666; width:600px; height:40px; margin-top:25px;}
+				.text1{margin:5px auto; width:600px;height:60px; margin-top:10px;}
+				.skin{width: 25px; height:25px; float:left; margin:7px 8px;}
+		</style>
+		<script>
+			window.onload = function(){
+				var skin = document.getElementsByClassName("skin");
+				var text1 = document.getElementsByClassName("text1")[0];
+				text1.style.backgroundColor = localStorage.getItem("skin");
+				for(var i = 0;i<skin.length;i++){
+					(function(k){
+						skin[k].onclick = function(){
+							localStorage.setItem("skin",skin[k].style.backgroundColor);
+							text1.style.backgroundColor = localStorage.getItem("skin");
+						}
+						skin[k].onmouseover = function(){
+							skin[k].style.marginTop = "-2px";
+						}
+						skin[k].onmouseout = function(){
+							skin[k].style.marginTop = "5px";
+						}
+					})(i);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset id="changeskin">
+			<legend><h2>页面换肤</h2></legend>
+			<div class="color1">
+				<div class="skin" style="background-color: #FF0000;"></div>
+				<div class="skin" style="background-color: #4A4AFF;"></div>
+				<div class="skin" style="background-color: #00FFFF;"></div>
+				<div class="skin" style="background-color: #28FF28;"></div>
+				<div class="skin" style="background-color: #F9F900;"></div>
+				<div class="skin" style="background-color: #FF5809;"></div>
+			</div>
+			<div class="text1">
+				<h4>LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。</h4>
+			</div>
+		</fieldset>
+	</body>
+</html>
