@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽</title>
+		<style type="text/css">
+		div{
+			border:2px solid gray;
+			width:180px;
+			height:180px;
+		}
+		</style>
+		<script>
+			window.onload = function(){
+				var drag = document.getElementById('drag');
+				drag.ondragover = function(event){
+					event.preventDefault();
+				};
+				drag.ondrop = function(event){
+					event.preventDefault();
+					var file = event.dataTransfer.files[0];
+					var gst = new FileReader();
+					gst.onload = function(){
+						drag.innerHTML = '<img src=\"'+gst.result+'\"/>';
+					}
+					gst.readAsDataURL(file);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h3>上传头像</h3>
+		<div id="drag" draggable="true"></div>
+	</body>
+</html>
